@@ -16,6 +16,7 @@ function IndexMain():JSX.Element
     </div>
 
     <div className="tagger-box">
+      <div className="header">current tags</div>
       <div className="tags-select-zone">
         <div className="tag">
           <p className="label">something</p>
