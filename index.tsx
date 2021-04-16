@@ -16,7 +16,32 @@ function IndexMain():JSX.Element
     </div>
 
     <div className="tagger-box">
-
+      <div className="tags-select-zone">
+        <div className="tag">
+          <p className="label">something</p>
+        </div>
+        <div className="tag selected">
+          <p className="label">something</p>
+        </div>
+        <div className="tag">
+          <p className="label">something</p>
+        </div>
+        <div className="tag selected">
+          <p className="label">something</p>
+        </div>
+        <div className="tag">
+          <p className="label">something</p>
+        </div>
+        <div className="tag selected">
+          <p className="label">something</p>
+        </div>
+        <div className="tag">
+          <p className="label">something</p>
+        </div>
+        <div className="tag selected">
+          <p className="label">something</p>
+        </div>
+      </div>
     </div>
   </>;
 }
