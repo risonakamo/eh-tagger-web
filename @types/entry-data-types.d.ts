@@ -1,3 +1,6 @@
+// !! CROSS LANGUAGE TYPES
+// !! mirrors entry-data-types.d.ts
+
 type EntryType="NHENTAI"|"OTHER"|"SANKAKU"|"IMGUR"|"DLSITE"|"HITOMI"
     |"PIXIV"|"EXHENTAI"|"BETASANKAKU"
 

@@ -1,3 +1,6 @@
+// !! CROSS LANGUAGE TYPES
+// !! mirrors tag_types.rs
+
 /** key: tag name, val: tag present or not */
 type TagSet=Record<string,boolean>
 
