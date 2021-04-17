@@ -38,76 +38,115 @@ p
 {
     // tempcolour
     @main-background: #151515;
+    @dialogues-background: #101010;
 
     position: absolute;
     background-color: @main-background;
     width: 500px; //temp
     height: 530px; //temp
     left: 200px; //temp
-    padding: 4px;
-    box-sizing: border-box;
 
-    .header
+    .title
     {
-        font-style: italic;
-        opacity: 0.6;
-        font-size: 12px;
-        text-align: center;
+        height: 18px;
+        background: @dialogues-background;
     }
 
-    .tags-select-zone
+    .body
     {
-        .tag
+        height: 500px;
+        width: 100%;
+        padding: 4px;
+        box-sizing: border-box;
+
+        .header
         {
-            // tempcolour
-            @tags-per-row: 5;
-
-            @padding: 5px;
-            @margin: 2px;
-
-            @unselected-border: #3a3a3a;
-            @hover-border: #585858;
-            @hover-background: #2525256b;
-
-            @selected-border: #509FC4;
-
-            // calculated
-            @width-offset: (@padding*2)+(@margin*2);
-
-            display: inline-block;
-            width: calc((percentage(1/@tags-per-row)) - @width-offset);
-            padding: @padding;
-            margin: @margin;
+            font-style: italic;
+            opacity: 0.6;
+            font-size: 12px;
             text-align: center;
-            cursor: pointer;
-            border-bottom: 1px solid @unselected-border;
-            user-select: none;
+        }
 
-            .label
+        .tags-select-zone
+        {
+            .tag
             {
-                opacity: .6;
-            }
+                // tempcolour
+                @tags-per-row: 5;
 
-            &.selected
-            {
-                border-bottom-color: @selected-border;
+                @padding: 5px;
+                @margin: 2px;
+
+                @unselected-border: #3a3a3a;
+                @hover-border: #585858;
+                @hover-background: #2525256b;
+
+                @selected-border: #509FC4;
+
+                // calculated
+                @width-offset: (@padding*2)+(@margin*2);
+
+                display: inline-block;
+                width: calc((percentage(1/@tags-per-row)) - @width-offset);
+                padding: @padding;
+                margin: @margin;
+                text-align: center;
+                cursor: pointer;
+                border-bottom: 1px solid @unselected-border;
+                user-select: none;
 
                 .label
                 {
-                    opacity: 1;
+                    opacity: .6;
+                }
+
+                &.selected
+                {
+                    border-bottom-color: @selected-border;
+
+                    .label
+                    {
+                        opacity: 1;
+                    }
+
+                    &:hover
+                    {
+                        border-bottom-color: @selected-border;
+                    }
                 }
 
                 &:hover
                 {
-                    border-bottom-color: @selected-border;
+                    border-bottom-color: @hover-border;
+                    background-color: @hover-background;
                 }
             }
-
-            &:hover
-            {
-                border-bottom-color: @hover-border;
-                background-color: @hover-background;
-            }
         }
+    }
+
+    .footer
+    {
+        background: @dialogues-background;
+        text-align: right;
+        padding: 5px;
+    }
+}
+
+.button-28
+{
+    @main-background: #2a7497;
+
+    display: inline-block;
+    padding: 5px 30px 5px 30px;
+    background-color: @main-background;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .2s background-color;
+    user-select: none;
+    margin: 2px;
+
+    &:hover
+    {
+        background-color: fade(@main-background,70%);
     }
 }

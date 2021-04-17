@@ -16,32 +16,44 @@ function IndexMain():JSX.Element
     </div>
 
     <div className="tagger-box">
-      <div className="header">current tags</div>
-      <div className="tags-select-zone">
-        <div className="tag">
-          <p className="label">something</p>
+      <div className="title">
+
+      </div>
+
+      <div className="body">
+        <div className="header">current tags</div>
+        <div className="tags-select-zone">
+          <div className="tag">
+            <p className="label">something</p>
+          </div>
+          <div className="tag selected">
+            <p className="label">something</p>
+          </div>
+          <div className="tag">
+            <p className="label">something</p>
+          </div>
+          <div className="tag selected">
+            <p className="label">something</p>
+          </div>
+          <div className="tag">
+            <p className="label">something</p>
+          </div>
+          <div className="tag selected">
+            <p className="label">something</p>
+          </div>
+          <div className="tag">
+            <p className="label">something</p>
+          </div>
+          <div className="tag selected">
+            <p className="label">something</p>
+          </div>
         </div>
-        <div className="tag selected">
-          <p className="label">something</p>
-        </div>
-        <div className="tag">
-          <p className="label">something</p>
-        </div>
-        <div className="tag selected">
-          <p className="label">something</p>
-        </div>
-        <div className="tag">
-          <p className="label">something</p>
-        </div>
-        <div className="tag selected">
-          <p className="label">something</p>
-        </div>
-        <div className="tag">
-          <p className="label">something</p>
-        </div>
-        <div className="tag selected">
-          <p className="label">something</p>
-        </div>
+      </div>
+
+      <div className="footer">
+        <div className="button-28">Save All</div>
+        <div className="button-28">Save Current</div>
+        <div className="button-28">Cancel</div>
       </div>
     </div>
   </>;
