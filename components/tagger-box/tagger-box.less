@@ -1,0 +1,54 @@
+// tempcolour
+@main-background: #151515;
+@dialogues-background: #101010;
+@new-colour: #ECB54B;
+
+.tagger-box
+{
+    position: absolute;
+    background-color: @main-background;
+    width: 500px; //temp
+    height: 530px; //temp
+    left: 200px; //temp
+
+    .title
+    {
+        padding: 2px;
+        padding-left: 9px;
+        background: @dialogues-background;
+    }
+
+    .body
+    {
+        height: 500px;
+        width: 100%;
+        padding: 4px;
+        box-sizing: border-box;
+
+        .header
+        {
+            font-style: italic;
+            opacity: 0.6;
+            font-size: 12px;
+            text-align: center;
+
+            &.new
+            {
+                color: @new-colour;
+                opacity: 0.9;
+            }
+        }
+
+        .spacer
+        {
+            height: 15px;
+        }
+    }
+
+    .footer
+    {
+        background: @dialogues-background;
+        text-align: right;
+        padding: 5px;
+    }
+}
