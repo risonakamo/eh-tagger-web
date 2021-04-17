@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import Tag from "components/tag/tag";
+
 import "css/index.less";
 
 function IndexMain():JSX.Element
@@ -23,9 +25,7 @@ function IndexMain():JSX.Element
       <div className="body">
         <div className="header">current tags</div>
         <div className="tags-select-zone">
-          <div className="tag">
-            <p className="label">something</p>
-          </div>
+          <Tag label="hey" selected={false}/>
           <div className="tag selected">
             <p className="label">something</p>
           </div>

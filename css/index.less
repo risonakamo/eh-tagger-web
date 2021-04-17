@@ -76,62 +76,6 @@ p
             }
         }
 
-        .tags-select-zone
-        {
-            .tag
-            {
-                // tempcolour
-                @tags-per-row: 5;
-
-                @padding: 5px;
-                @margin: 2px;
-
-                @unselected-border: #3a3a3a;
-                @hover-border: #585858;
-                @hover-background: #2525256b;
-
-                @selected-border: #509FC4;
-
-                // calculated
-                @width-offset: (@padding*2)+(@margin*2);
-
-                display: inline-block;
-                width: calc((percentage(1/@tags-per-row)) - @width-offset);
-                padding: @padding;
-                margin: @margin;
-                text-align: center;
-                cursor: pointer;
-                border-bottom: 1px solid @unselected-border;
-                user-select: none;
-
-                .label
-                {
-                    opacity: .6;
-                }
-
-                &.selected
-                {
-                    border-bottom-color: @selected-border;
-
-                    .label
-                    {
-                        opacity: 1;
-                    }
-
-                    &:hover
-                    {
-                        border-bottom-color: @selected-border;
-                    }
-                }
-
-                &:hover
-                {
-                    border-bottom-color: @hover-border;
-                    background-color: @hover-background;
-                }
-            }
-        }
-
         .spacer
         {
             height: 15px;

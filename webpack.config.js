@@ -59,7 +59,8 @@ module.exports={
     resolve:{
         extensions:[".tsx",".ts",".jsx",".js"],
         alias:{
-            css:`${__dirname}/css`
+            css:`${__dirname}/css`,
+            components:`${__dirname}/components`
         }
     },
 
