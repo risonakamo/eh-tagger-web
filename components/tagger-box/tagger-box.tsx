@@ -23,10 +23,39 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
   },[props.entry]);
 
   /** create tag elements from tagset */
-  function createTags(tagset:TagSet):JSX.Element[]
+  function createTags(tagset:TagSet,newTags:boolean):JSX.Element[]
   {
+    var toggleTagFunction:(tag:string)=>void;
+    if (!newTags)
+    {
+      toggleTagFunction=toggleCurrentTag;
+    }
+
+    else
+    {
+      toggleTagFunction=toggleNewTag;
+    }
+
     return _.map(tagset,(x:boolean,i:string)=>{
-      return <Tag label={i} key={i} selected={x}/>;
+      return <Tag label={i} key={i} selected={x} onClick={toggleTagFunction}/>;
+    });
+  }
+
+  /** toggle a current tag */
+  function toggleCurrentTag(tag:string):void
+  {
+    setCurrentTags({
+      ...theCurrentTags,
+      [tag]:!theCurrentTags[tag]
+    });
+  }
+
+  /** toggle a new tag */
+  function toggleNewTag(tag:string):void
+  {
+    setNewTags({
+      ...theNewTags,
+      [tag]:!theNewTags[tag]
     });
   }
 
@@ -38,14 +67,14 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
     <div className="body">
       <div className="header">current tags</div>
       <div className="tags-select-zone">
-        {createTags(theCurrentTags)}
+        {createTags(theCurrentTags,false)}
       </div>
 
       <div className="spacer"></div>
 
       <div className="header new">new tags</div>
       <div className="tags-select-zone">
-        {createTags(theNewTags)}
+        {createTags(theNewTags,true)}
       </div>
     </div>
 

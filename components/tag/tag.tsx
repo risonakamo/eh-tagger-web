@@ -7,6 +7,7 @@ interface TagProps
 {
   label:string
   selected:boolean
+  onClick?(label:string):void // click handler provides label
 }
 
 export default function Tag(props:TagProps):JSX.Element
@@ -15,7 +16,13 @@ export default function Tag(props:TagProps):JSX.Element
     selected:props.selected
   };
 
-  return <div className={cx("tag",classes)}>
+  /** handle click. */
+  function clickHandler():void
+  {
+    props.onClick?.(props.label);
+  }
+
+  return <div className={cx("tag",classes)} onClick={clickHandler}>
     <p className="label">{props.label}</p>
   </div>;
 }
