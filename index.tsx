@@ -17,7 +17,7 @@ function IndexMain():JSX.Element
 
     <div className="tagger-box">
       <div className="title">
-
+        the title
       </div>
 
       <div className="body">
@@ -36,6 +36,45 @@ function IndexMain():JSX.Element
             <p className="label">something</p>
           </div>
           <div className="tag">
+            <p className="label">something</p>
+          </div>
+          <div className="tag selected">
+            <p className="label">something</p>
+          </div>
+          <div className="tag">
+            <p className="label">something</p>
+          </div>
+          <div className="tag selected">
+            <p className="label">something</p>
+          </div>
+        </div>
+
+        <div className="spacer"></div>
+
+        <div className="header new">new tags</div>
+        <div className="tags-select-zone">
+          <div className="tag">
+            <p className="label">something</p>
+          </div>
+          <div className="tag selected">
+            <p className="label">something</p>
+          </div>
+          <div className="tag">
+            <p className="label">something</p>
+          </div>
+          <div className="tag selected">
+            <p className="label">something</p>
+          </div>
+          <div className="tag">
+            <p className="label">something</p>
+          </div>
+          <div className="tag selected">
+            <p className="label">something</p>
+          </div>
+          <div className="tag selected">
+            <p className="label">something</p>
+          </div>
+          <div className="tag selected">
             <p className="label">something</p>
           </div>
           <div className="tag selected">

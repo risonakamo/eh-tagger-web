@@ -48,7 +48,8 @@ p
 
     .title
     {
-        height: 18px;
+        padding: 2px;
+        padding-left: 9px;
         background: @dialogues-background;
     }
 
@@ -61,10 +62,18 @@ p
 
         .header
         {
+            @new-colour: #ECB54B;
+
             font-style: italic;
             opacity: 0.6;
             font-size: 12px;
             text-align: center;
+
+            &.new
+            {
+                color: @new-colour;
+                opacity: 0.9;
+            }
         }
 
         .tags-select-zone
@@ -121,6 +130,11 @@ p
                     background-color: @hover-background;
                 }
             }
+        }
+
+        .spacer
+        {
+            height: 15px;
         }
     }
 
