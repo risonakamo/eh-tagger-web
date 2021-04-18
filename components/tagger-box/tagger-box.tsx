@@ -67,7 +67,7 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
 
   return <div className={cx("tagger-box",classes)}>
     <div className="title">
-      the title
+      {props.entry.data.name}
     </div>
 
     <div className="body">
