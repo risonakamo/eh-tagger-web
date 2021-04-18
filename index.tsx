@@ -1,7 +1,9 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import ReactDOM from "react-dom";
+import _ from "lodash";
 
 import TaggerBox from "components/tagger-box/tagger-box";
+import TaggerRow from "components/tagger-row/tagger-row";
 
 import {getTagEntries} from "lib/eh-tagger-api";
 
@@ -32,23 +34,29 @@ const exampleEntry:TagEntry={
 
 function IndexMain():JSX.Element
 {
+  const [theEntries,setEntries]=useState<TagEntry[]>([]);
+
+  /** initial load of entries */
   useEffect(()=>{
     (async ()=>{
-      console.log(await getTagEntries());
+      setEntries(await getTagEntries());
     })();
   },[]);
 
-  return <>
-    <div className="tagger-entries">
-      <div className="tagger-entry">
-        test entry 1
-      </div>
-      <div className="tagger-entry">
-        test entry 2
-      </div>
+  /** render tagger rows from the array of tag entrys. */
+  function renderTaggerRows(entries:TagEntry[]):JSX.Element[]
+  {
+    return _.map(entries,(x:TagEntry)=>{
+      return <TaggerRow entry={x} key={x.data.link}/>;
+    });
+  }
 
-      <TaggerBox entry={exampleEntry} showing={false}/>
+  return <>
+    <div className="tagger-rows">
+      {renderTaggerRows(theEntries)}
     </div>
+
+    <TaggerBox entry={exampleEntry} showing={false}/>
   </>;
 }
 
