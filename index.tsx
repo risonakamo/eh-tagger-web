@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useEffect} from "react";
 import ReactDOM from "react-dom";
 
 import TaggerBox from "components/tagger-box/tagger-box";
+
+import {getTagEntries} from "lib/eh-tagger-api";
 
 import "css/index.less";
 
@@ -30,6 +32,12 @@ const exampleEntry:TagEntry={
 
 function IndexMain():JSX.Element
 {
+  useEffect(()=>{
+    (async ()=>{
+      console.log(await getTagEntries());
+    })();
+  },[]);
+
   return <>
     <div className="tagger-entries">
       <div className="tagger-entry">

@@ -29,3 +29,6 @@ interface TagEntry
     outdated:boolean
     numberOutdated:number
 }
+
+/** vector of TagEntries. could be replaced by a hashmap sometime. */
+type TagEntries=TagEntry[]
