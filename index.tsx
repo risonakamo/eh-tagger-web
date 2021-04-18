@@ -47,7 +47,7 @@ function IndexMain():JSX.Element
         test entry 2
       </div>
 
-      <TaggerBox entry={exampleEntry}/>
+      <TaggerBox entry={exampleEntry} showing={false}/>
     </div>
   </>;
 }

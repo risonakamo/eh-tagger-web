@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from "react";
 import _ from "lodash";
+import cx from "classnames";
 
 import Tag from "components/tag/tag";
 import {tagListToTagSet} from "lib/tag-helpers";
@@ -9,6 +10,7 @@ import "./tagger-box.less";
 interface TaggerBoxProps
 {
   entry:TagEntry
+  showing:boolean
 }
 
 export default function TaggerBox(props:TaggerBoxProps):JSX.Element
@@ -59,7 +61,11 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
     });
   }
 
-  return <div className="tagger-box">
+  const classes={
+    hidden:!props.showing
+  };
+
+  return <div className={cx("tagger-box",classes)}>
     <div className="title">
       the title
     </div>
