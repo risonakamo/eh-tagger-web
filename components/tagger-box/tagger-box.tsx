@@ -33,25 +33,6 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
     }
   },[props.entry]);
 
-  /** create tag elements from tagset */
-  function createTags(tagset:TagSet,newTags:boolean):JSX.Element[]
-  {
-    var toggleTagFunction:(tag:string)=>void;
-    if (!newTags)
-    {
-      toggleTagFunction=toggleCurrentTag;
-    }
-
-    else
-    {
-      toggleTagFunction=toggleNewTag;
-    }
-
-    return _.map(tagset,(x:boolean,i:string)=>{
-      return <Tag label={i} key={i} selected={x} onClick={toggleTagFunction}/>;
-    });
-  }
-
   /** toggle a current tag */
   function toggleCurrentTag(tag:string):void
   {
@@ -70,6 +51,38 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
     });
   }
 
+  /** render tag elements from tagset */
+  function renderTags(tagset:TagSet,newTags:boolean):JSX.Element[]
+  {
+    var toggleTagFunction:(tag:string)=>void;
+    if (!newTags)
+    {
+      toggleTagFunction=toggleCurrentTag;
+    }
+
+    else
+    {
+      toggleTagFunction=toggleNewTag;
+    }
+
+    return _.map(tagset,(x:boolean,i:string)=>{
+      return <Tag label={i} key={i} selected={x} onClick={toggleTagFunction}/>;
+    });
+  }
+
+  /** element that displays when there are no tags for a section */
+  function renderNoTags(tagset:TagSet):JSX.Element|null
+  {
+    if (!_.keys(tagset).length)
+    {
+      return <div className="no-tags">
+        none
+      </div>;
+    }
+
+    return null;
+  }
+
   const classes={
     hidden:!props.showing
   };
@@ -82,14 +95,16 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
     <div className="body">
       <div className="header">current tags</div>
       <div className="tags-select-zone">
-        {createTags(theCurrentTags,false)}
+        {renderTags(theCurrentTags,false)}
+        {renderNoTags(theCurrentTags)}
       </div>
 
       <div className="spacer"></div>
 
       <div className="header new">new tags</div>
       <div className="tags-select-zone">
-        {createTags(theNewTags,true)}
+        {renderTags(theNewTags,true)}
+        {renderNoTags(theNewTags)}
       </div>
     </div>
 
