@@ -9,7 +9,7 @@ import "./tagger-box.less";
 
 interface TaggerBoxProps
 {
-  entry:TagEntry
+  entry:TagEntry|null
   showing:boolean
 }
 
@@ -20,8 +20,17 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
 
   /** on recieving new entry, set the current tags and new tags */
   useEffect(()=>{
-    setCurrentTags(props.entry.tagData.tags);
-    setNewTags(tagListToTagSet(props.entry.missingTags));
+    if (!props.entry)
+    {
+      setCurrentTags({});
+      setNewTags({});
+    }
+
+    else
+    {
+      setCurrentTags(props.entry.tagData.tags);
+      setNewTags(tagListToTagSet(props.entry.missingTags));
+    }
   },[props.entry]);
 
   /** create tag elements from tagset */
@@ -67,7 +76,7 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
 
   return <div className={cx("tagger-box",classes)}>
     <div className="title">
-      {props.entry.data.name}
+      {props.entry?.data.name || "unloaded"}
     </div>
 
     <div className="body">
