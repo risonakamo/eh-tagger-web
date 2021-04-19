@@ -5,7 +5,7 @@ import cx from "classnames";
 import Tag from "components/tag/tag";
 import Button28 from "components/button-28/button-28";
 
-import {tagListToTagSet} from "lib/tag-helpers";
+import {tagListToTagSet,tagSetToTagSetArray} from "lib/tag-helpers";
 
 import "./tagger-box.less";
 
@@ -67,8 +67,10 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
       toggleTagFunction=toggleNewTag;
     }
 
-    return _.map(tagset,(x:boolean,i:string)=>{
-      return <Tag label={i} key={i} selected={x} onClick={toggleTagFunction}/>;
+    var taglist:TagSetArray=tagSetToTagSetArray(tagset);
+
+    return _.map(taglist,(x:TagSetItem)=>{
+      return <Tag label={x.tag} key={x.tag} selected={x.set} onClick={toggleTagFunction}/>;
     });
   }
 
