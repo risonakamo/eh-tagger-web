@@ -3,6 +3,8 @@ import _ from "lodash";
 import cx from "classnames";
 
 import Tag from "components/tag/tag";
+import Button28 from "components/button-28/button-28";
+
 import {tagListToTagSet} from "lib/tag-helpers";
 
 import "./tagger-box.less";
@@ -109,9 +111,9 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
     </div>
 
     <div className="footer">
-      <div className="button-28">Save All</div>
-      <div className="button-28">Save Current</div>
-      <div className="button-28">Cancel</div>
+      <Button28 text="Save All"/>
+      <Button28 text="Save Current"/>
+      <Button28 text="Cancel"/>
     </div>
   </div>;
 }

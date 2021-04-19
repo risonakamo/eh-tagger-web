@@ -1,0 +1,19 @@
+// tempcolour
+@main-background: #2a7497;
+
+.button-28
+{
+    display: inline-block;
+    padding: 5px 30px 5px 30px;
+    background-color: @main-background;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .2s background-color;
+    user-select: none;
+    margin: 2px;
+
+    &:hover
+    {
+        background-color: fade(@main-background,70%);
+    }
+}
