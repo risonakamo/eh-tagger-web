@@ -4,7 +4,9 @@
         "jsx":"react",
         "lib":["dom","ESNext"],
         "target":"ESNext",
-        "esModuleInterop":true
+        "esModuleInterop":true,
+        "baseUrl":".",
+        "moduleResolution":"node"
     },
     "include":[
         "**/*.ts",
