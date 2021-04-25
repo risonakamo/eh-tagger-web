@@ -12,15 +12,15 @@ interface TagProps
 
 export default function Tag(props:TagProps):JSX.Element
 {
-  const classes={
-    selected:props.selected
-  };
-
   /** handle click. */
   function clickHandler():void
   {
     props.onClick?.(props.label);
   }
+
+  const classes={
+    selected:props.selected
+  };
 
   return <div className={cx("tag",classes)} onClick={clickHandler} title={props.label}>
     <p className="label">{props.label}</p>
