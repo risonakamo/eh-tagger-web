@@ -22,7 +22,7 @@ export default function Tag(props:TagProps):JSX.Element
     props.onClick?.(props.label);
   }
 
-  return <div className={cx("tag",classes)} onClick={clickHandler}>
+  return <div className={cx("tag",classes)} onClick={clickHandler} title={props.label}>
     <p className="label">{props.label}</p>
   </div>;
 }
