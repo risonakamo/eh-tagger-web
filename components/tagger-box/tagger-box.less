@@ -5,11 +5,10 @@
 
 .tagger-box
 {
-    position: fixed;
+    position: fixed !important;
+    display: flex;
+    flex-direction: column;
     background-color: @main-background;
-    width: 500px; //temp
-    left: 200px; //temp
-    top: 100px; //temp
 
     .title
     {
@@ -22,10 +21,10 @@
 
     .body
     {
-        height: 500px;
         width: 100%;
         padding: 4px;
         box-sizing: border-box;
+        flex: 1;
 
         .header
         {
@@ -65,6 +64,6 @@
 
     &.hidden
     {
-        display: none;
+        display: none !important;
     }
 }

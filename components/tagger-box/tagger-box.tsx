@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import _ from "lodash";
 import cx from "classnames";
+import {Rnd} from "react-rnd";
 
 import Tag from "components/tag/tag";
 import Button28 from "components/button-28/button-28";
@@ -55,6 +56,7 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
     });
   }
 
+  /* -- RENDER -- */
   /** render tag elements from tagset */
   function renderTags(tagset:TagSet,newTags:boolean):JSX.Element[]
   {
@@ -96,7 +98,21 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
   const currentTagsText:string=`current tags (${_.size(theCurrentTags)})`;
   const newTagsText:string=`new tags (${_.size(theNewTags)})`;
 
-  return <div className={cx("tagger-box",classes)}>
+  const rndDefault={
+    // todo: fix this
+    x:window.innerWidth*.25,
+    y:window.innerHeight*.05,
+    width:500,
+    height:600
+  };
+
+  const rndStyle={
+    display:"flex"
+  };
+
+  return <Rnd default={rndDefault} className={cx("tagger-box",classes)} dragHandleClassName="title"
+    style={rndStyle} minWidth={500} minHeight={300} bounds={"window"}
+  >
     <div className="title">
       {props.entry?.data.name || "unloaded"}
     </div>
@@ -122,5 +138,5 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
       <Button28 text="Save Current"/>
       <Button28 text="Cancel" onClick={props.onCancel}/>
     </div>
-  </div>;
+  </Rnd>;
 }
