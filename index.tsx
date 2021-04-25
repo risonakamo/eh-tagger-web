@@ -34,6 +34,12 @@ function IndexMain():JSX.Element
     setEditingEntry(entry);
   }
 
+  /** close the tag editor */
+  function closeEditor():void
+  {
+    setEditorOpen(false);
+  }
+
   /** render tagger rows from the array of tag entrys. */
   function renderTaggerRows(entries:TagEntry[]):JSX.Element[]
   {
@@ -47,7 +53,7 @@ function IndexMain():JSX.Element
       {renderTaggerRows(theEntries)}
     </div>
 
-    <TaggerBox entry={theEditingEntry} showing={theEditorOpen}/>
+    <TaggerBox entry={theEditingEntry} showing={theEditorOpen} onCancel={closeEditor}/>
   </>;
 }
 

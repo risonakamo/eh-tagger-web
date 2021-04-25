@@ -13,6 +13,8 @@ interface TaggerBoxProps
 {
   entry:TagEntry|null
   showing:boolean
+
+  onCancel?():void //cancel button function
 }
 
 export default function TaggerBox(props:TaggerBoxProps):JSX.Element
@@ -91,13 +93,16 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
     hidden:!props.showing
   };
 
+  const currentTagsText:string=`current tags (${_.size(theCurrentTags)})`;
+  const newTagsText:string=`new tags (${_.size(theNewTags)})`;
+
   return <div className={cx("tagger-box",classes)}>
     <div className="title">
       {props.entry?.data.name || "unloaded"}
     </div>
 
     <div className="body">
-      <div className="header">current tags</div>
+      <div className="header">{currentTagsText}</div>
       <div className="tags-select-zone">
         {renderTags(theCurrentTags,false)}
         {renderNoTags(theCurrentTags)}
@@ -105,7 +110,7 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
 
       <div className="spacer"></div>
 
-      <div className="header new">new tags</div>
+      <div className="header new">{newTagsText}</div>
       <div className="tags-select-zone">
         {renderTags(theNewTags,true)}
         {renderNoTags(theNewTags)}
@@ -115,7 +120,7 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
     <div className="footer">
       <Button28 text="Save All"/>
       <Button28 text="Save Current"/>
-      <Button28 text="Cancel"/>
+      <Button28 text="Cancel" onClick={props.onCancel}/>
     </div>
   </div>;
 }
