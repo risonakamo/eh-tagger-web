@@ -32,3 +32,10 @@ interface TagEntry
 
 /** vector of TagEntries. could be replaced by a hashmap sometime. */
 type TagEntries=TagEntry[]
+
+/** request to update tags for a TagEntry */
+interface TagUpdate
+{
+    link:string
+    tags:TagSet
+}
