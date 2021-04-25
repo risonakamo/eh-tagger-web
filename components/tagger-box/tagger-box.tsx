@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from "react";
 import _ from "lodash";
 import cx from "classnames";
+import Draggable from "react-draggable";
+import {ResizableBox} from "react-resizable";
 
 import Tag from "components/tag/tag";
 import Button28 from "components/button-28/button-28";
@@ -8,6 +10,7 @@ import Button28 from "components/button-28/button-28";
 import {tagListToTagSet,tagSetToTagSetArray} from "lib/tag-helpers";
 
 import "./tagger-box.less";
+import "react-resizable/css/styles.css";
 
 interface TaggerBoxProps
 {
@@ -96,31 +99,33 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
   const currentTagsText:string=`current tags (${_.size(theCurrentTags)})`;
   const newTagsText:string=`new tags (${_.size(theNewTags)})`;
 
-  return <div className={cx("tagger-box",classes)}>
-    <div className="title">
-      {props.entry?.data.name || "unloaded"}
-    </div>
-
-    <div className="body">
-      <div className="header">{currentTagsText}</div>
-      <div className="tags-select-zone">
-        {renderTags(theCurrentTags,false)}
-        {renderNoTags(theCurrentTags)}
+  return <Draggable handle=".drag-title">
+    <div className={cx("tagger-box",classes)}>
+      <div className="title drag-title">
+        {props.entry?.data.name || "unloaded"}
       </div>
 
-      <div className="spacer"></div>
+      <div className="body">
+        <div className="header">{currentTagsText}</div>
+        <div className="tags-select-zone">
+          {renderTags(theCurrentTags,false)}
+          {renderNoTags(theCurrentTags)}
+        </div>
 
-      <div className="header new">{newTagsText}</div>
-      <div className="tags-select-zone">
-        {renderTags(theNewTags,true)}
-        {renderNoTags(theNewTags)}
+        <div className="spacer"></div>
+
+        <div className="header new">{newTagsText}</div>
+        <div className="tags-select-zone">
+          {renderTags(theNewTags,true)}
+          {renderNoTags(theNewTags)}
+        </div>
+      </div>
+
+      <div className="footer">
+        <Button28 text="Save All"/>
+        <Button28 text="Save Current"/>
+        <Button28 text="Cancel" onClick={props.onCancel}/>
       </div>
     </div>
-
-    <div className="footer">
-      <Button28 text="Save All"/>
-      <Button28 text="Save Current"/>
-      <Button28 text="Cancel" onClick={props.onCancel}/>
-    </div>
-  </div>;
+  </Draggable>;
 }
