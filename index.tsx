@@ -5,7 +5,7 @@ import _ from "lodash";
 import TaggerBox from "components/tagger-box/tagger-box";
 import TaggerRow from "components/tagger-row/tagger-row";
 
-import {getTagEntries} from "lib/eh-tagger-api";
+import {getTagEntries,updateTags} from "lib/eh-tagger-api";
 
 import "css/index.less";
 
@@ -17,12 +17,10 @@ function IndexMain():JSX.Element
 
   /** initial load of entries */
   useEffect(()=>{
-    (async ()=>{
-      setEntries(await getTagEntries());
-    })();
+    refreshEntries();
   },[]);
 
-  /** load the tag editor with the specified entry. fails if the tag editor is already open.*/
+  /** load the tag editor with the specified entry. */
   function editTags(entry:TagEntry):void
   {
     // if (theEditorOpen)
@@ -40,6 +38,20 @@ function IndexMain():JSX.Element
     setEditorOpen(false);
   }
 
+  /** send tag update, close editor, and refresh the list */
+  async function saveTagsAndClose(tagupdate:TagUpdate):Promise<void>
+  {
+    closeEditor();
+    await updateTags(tagupdate);
+    refreshEntries();
+  }
+
+  /** refresh entries from api */
+  async function refreshEntries():Promise<void>
+  {
+    setEntries(await getTagEntries());
+  }
+
   /** render tagger rows from the array of tag entrys. */
   function renderTaggerRows(entries:TagEntry[]):JSX.Element[]
   {
@@ -53,7 +65,8 @@ function IndexMain():JSX.Element
       {renderTaggerRows(theEntries)}
     </div>
 
-    <TaggerBox entry={theEditingEntry} showing={theEditorOpen} onCancel={closeEditor}/>
+    <TaggerBox entry={theEditingEntry} showing={theEditorOpen} onCancel={closeEditor}
+      onSubmit={saveTagsAndClose}/>
   </>;
 }
 

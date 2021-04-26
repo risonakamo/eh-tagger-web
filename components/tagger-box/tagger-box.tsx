@@ -16,6 +16,7 @@ interface TaggerBoxProps
   showing:boolean
 
   onCancel?():void //cancel button function
+  onSubmit?(tagupdate:TagUpdate):void
 }
 
 export default function TaggerBox(props:TaggerBoxProps):JSX.Element
@@ -53,6 +54,34 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
     setNewTags({
       ...theNewTags,
       [tag]:!theNewTags[tag]
+    });
+  }
+
+  /** submit all button */
+  function handleSubmitAll():void
+  {
+    if (!props.entry)
+    {
+      return;
+    }
+
+    props.onSubmit?.({
+      link:props.entry.data.link,
+      tags:{...theCurrentTags,...theNewTags}
+    });
+  }
+
+  /** submit current button */
+  function handleSubmitCurrent():void
+  {
+    if (!props.entry)
+    {
+      return;
+    }
+
+    props.onSubmit?.({
+      link:props.entry.data.link,
+      tags:theCurrentTags
     });
   }
 
@@ -134,8 +163,8 @@ export default function TaggerBox(props:TaggerBoxProps):JSX.Element
     </div>
 
     <div className="footer">
-      <Button28 text="Save All"/>
-      <Button28 text="Save Current"/>
+      <Button28 text="Save All" onClick={handleSubmitAll}/>
+      <Button28 text="Save Current" onClick={handleSubmitCurrent}/>
       <Button28 text="Cancel" onClick={props.onCancel}/>
     </div>
   </Rnd>;
