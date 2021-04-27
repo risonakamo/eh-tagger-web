@@ -5,27 +5,33 @@ import "./tagger-row.less";
 interface TaggerRowProps
 {
   entry:TagEntry
-  onClick?(entry:TagEntry):void //click callback provides this row's entry
+  onTagsClick?(entry:TagEntry):void
 }
 
 export default function TaggerRow(props:TaggerRowProps):JSX.Element
 {
-  /** handle this row click. */
-  function handleClick():void
+  /** handle clicking on the tag part of the row. */
+  function handleTagsClick():void
   {
-    props.onClick?.(props.entry);
+    props.onTagsClick?.(props.entry);
   }
 
-  return <div className="tagger-row" onClick={handleClick}>
-    <div className="icons">
-      {props.entry.numberOutdated}
+  var tagsMissingText:string|number="";
+  if (props.entry.outdated)
+  {
+    tagsMissingText=props.entry.numberOutdated;
+  }
+
+  return <div className="tagger-row">
+    <div className="icons" onClick={handleTagsClick}>
+      {tagsMissingText}
     </div>
 
-    <a className="name" href={props.entry.data.link}>
+    <a className="name" href={props.entry.data.link} title={props.entry.data.link} target="_blank">
       {props.entry.data.name}
     </a>
 
-    <div className="tags">
+    <div className="tags" onClick={handleTagsClick}>
 
     </div>
   </div>;

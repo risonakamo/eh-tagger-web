@@ -56,7 +56,7 @@ function IndexMain():JSX.Element
   function renderTaggerRows(entries:TagEntry[]):JSX.Element[]
   {
     return _.map(entries,(x:TagEntry)=>{
-      return <TaggerRow entry={x} key={x.data.link} onClick={editTags}/>;
+      return <TaggerRow entry={x} key={x.data.link} onTagsClick={editTags}/>;
     });
   }
 
