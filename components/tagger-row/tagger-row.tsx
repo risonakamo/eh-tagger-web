@@ -17,6 +17,16 @@ export default function TaggerRow(props:TaggerRowProps):JSX.Element
   }
 
   return <div className="tagger-row" onClick={handleClick}>
-    {props.entry.data.name}
+    <div className="icons">
+      {props.entry.numberOutdated}
+    </div>
+
+    <a className="name" href={props.entry.data.link}>
+      {props.entry.data.name}
+    </a>
+
+    <div className="tags">
+
+    </div>
   </div>;
 }

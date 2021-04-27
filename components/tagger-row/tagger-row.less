@@ -1,14 +1,53 @@
 // tempcolour
 @background-fade: #dbdbdb;
+@background-transition: background-color .2s;
+
+@name-cell-ratio: 4; //out of 10
+@tags-cell-ratio: 10-@name-cell-ratio;
 
 .tagger-row
 {
-    padding: 3px;
+    display: flex;
+    height: 43px;
     cursor: pointer;
     user-select: none;
+    .background-transition();
+
+    .icons
+    {
+        .clickable-cell();
+        width: 40px;
+    }
+
+    .name
+    {
+        .clickable-cell();
+        flex: @name-cell-ratio;
+        padding: 3px;
+    }
+
+    .tags
+    {
+        .clickable-cell();
+        flex: @tags-cell-ratio;
+    }
 
     &:hover
     {
         background-color: fade(@background-fade,10%);
+    }
+
+    .clickable-cell()
+    {
+        &:hover
+        {
+            background-color: fade(@background-fade,5%);
+            .background-transition();
+        }
+    }
+
+    .background-transition()
+    {
+        transition: @background-transition;
     }
 }
