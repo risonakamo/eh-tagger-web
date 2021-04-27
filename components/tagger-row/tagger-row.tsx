@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 
 import "./tagger-row.less";
 
@@ -14,6 +15,12 @@ export default function TaggerRow(props:TaggerRowProps):JSX.Element
   function handleTagsClick():void
   {
     props.onTagsClick?.(props.entry);
+  }
+
+  // TODO: make this actually something
+  function renderTagsString():string
+  {
+    return _.keys(props.entry.tagData.tags).join(", ");
   }
 
   var tagsMissingText:string|number="";
@@ -32,7 +39,7 @@ export default function TaggerRow(props:TaggerRowProps):JSX.Element
     </a>
 
     <div className="tags" onClick={handleTagsClick}>
-
+      {renderTagsString()}
     </div>
   </div>;
 }
