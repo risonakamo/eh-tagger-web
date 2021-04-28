@@ -61,6 +61,14 @@ function IndexMain():JSX.Element
   }
 
   return <>
+    <div className="header">
+      <div className="tagger-row-header">
+        <div className="icon"></div>
+        <div className="name">name</div>
+        <div className="tags">tags</div>
+      </div>
+    </div>
+
     <div className="tagger-rows">
       {renderTaggerRows(theEntries)}
     </div>
