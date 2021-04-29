@@ -64,8 +64,8 @@ function IndexMain():JSX.Element
     <div className="header">
       <div className="tagger-row-header">
         <div className="icon"></div>
-        <div className="name">name</div>
-        <div className="tags">tags</div>
+        <div className="header-row name">name</div>
+        <div className="header-row tags">tags</div>
       </div>
     </div>
 

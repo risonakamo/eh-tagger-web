@@ -1,3 +1,5 @@
+@import (reference) "~css/tagger-row-shared.less";
+
 // tempcolour
 @background-fade: #dbdbdb;
 @missing-tags-colour: #E47B2C;
@@ -31,17 +33,15 @@
     .name
     {
         .clickable-cell();
+        .row-text-box();
         flex: @name-cell-ratio;
-        padding: 4px 9px 4px 9px;
-        box-sizing: border-box;
     }
 
     .tags
     {
         .clickable-cell();
+        .row-text-box();
         flex: @tags-cell-ratio;
-        padding: 4px 9px 4px 9px;
-        box-sizing: border-box;
     }
 
     &:hover
