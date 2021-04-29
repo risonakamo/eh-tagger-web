@@ -4,6 +4,7 @@ import _ from "lodash";
 
 import TaggerBox from "components/tagger-box/tagger-box";
 import TaggerRow from "components/tagger-row/tagger-row";
+import TaggerRowHeader from "components/tagger-row-header/tagger-row-header";
 
 import {getTagEntries,updateTags} from "lib/eh-tagger-api";
 
@@ -62,11 +63,7 @@ function IndexMain():JSX.Element
 
   return <>
     <div className="header">
-      <div className="tagger-row-header">
-        <div className="icon"></div>
-        <div className="header-row name">name</div>
-        <div className="header-row tags">tags</div>
-      </div>
+      <TaggerRowHeader/>
     </div>
 
     <div className="tagger-rows">

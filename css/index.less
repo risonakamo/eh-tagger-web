@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import (reference) "~css/tagger-row-shared.less";
 
 // tempcolour
 @main-background: #1e1e1e;
@@ -43,45 +42,6 @@ a
     {
         height: 20px;
         background-color: @header-background;
-
-        .tagger-row-header
-        {
-            // tempcolour
-            @hover-cell-background: #3c3c3c;
-
-            @name-cell-ratio: 4; //out of 10
-            @tags-cell-ratio: 10-@name-cell-ratio;
-
-            display: flex;
-
-            .icon
-            {
-                width: 40px;
-            }
-
-            .header-row
-            {
-                cursor: pointer;
-                box-sizing: border-box;
-
-                &.name
-                {
-                    flex: @name-cell-ratio;
-                    padding: 1px 9px 1px 9px;
-                }
-
-                &.tags
-                {
-                    flex: @tags-cell-ratio;
-                    padding: 1px 26px 1px 9px;
-                }
-
-                &:hover
-                {
-                    background-color: fade(@hover-cell-background,20%);
-                }
-            }
-        }
     }
 
     .tagger-rows
