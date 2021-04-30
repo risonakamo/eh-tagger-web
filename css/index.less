@@ -3,7 +3,7 @@
 // tempcolour
 @main-background: #1e1e1e;
 @main-text: #f0f0f0;
-@header-background: #151515;
+@header-background: #101010;
 
 html
 {
@@ -38,14 +38,33 @@ a
     flex-direction: column;
     overflow: hidden;
 
-    .header
+    .top-header
     {
         background-color: @header-background;
 
         .menu
         {
             height: 25px;
-            background-color: #0b0b0b;
+
+            .menu-button
+            {
+                @hover-background: #e8e8e8;
+
+                display: inline-block;
+                height: 25px;
+                width: 25px;
+                cursor: pointer;
+
+                &:hover
+                {
+                    background-color: fade(@hover-background,10%);
+                }
+
+                &:active
+                {
+                    background-color: fade(@hover-background,20%);
+                }
+            }
         }
     }
 

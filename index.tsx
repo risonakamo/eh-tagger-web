@@ -62,10 +62,10 @@ function IndexMain():JSX.Element
   }
 
   return <>
-    <div className="header">
+    <div className="top-header">
       <div className="menu">
         <div className="menu-button">
-
+          <img src="assets/temp_randentry.png"/>
         </div>
       </div>
       <TaggerRowHeader/>
