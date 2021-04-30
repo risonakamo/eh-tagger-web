@@ -24,3 +24,11 @@ export async function updateTags(tagupdate:TagUpdate):Promise<void>
         }
     });
 }
+
+/** get a random tag entry that has missing tags */
+export async function randomEntryWithMissing():Promise<TagEntry>
+{
+    return (await fetch("/get-random-entry",{
+        method:"GET"
+    })).json();
+}

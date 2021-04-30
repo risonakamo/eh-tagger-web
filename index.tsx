@@ -6,7 +6,7 @@ import TaggerBox from "components/tagger-box/tagger-box";
 import TaggerRow from "components/tagger-row/tagger-row";
 import TaggerRowHeader from "components/tagger-row-header/tagger-row-header";
 
-import {getTagEntries,updateTags} from "lib/eh-tagger-api";
+import {getTagEntries,updateTags,randomEntryWithMissing} from "lib/eh-tagger-api";
 
 import "css/index.less";
 
@@ -50,6 +50,7 @@ function IndexMain():JSX.Element
   /** refresh entries from api */
   async function refreshEntries():Promise<void>
   {
+    console.log(await randomEntryWithMissing());
     setEntries(await getTagEntries());
   }
 
